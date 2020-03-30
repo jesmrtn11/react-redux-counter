@@ -46,8 +46,8 @@ store.subscribe(() => {
 });
 
 // Dispatching Action
-store.dispatch({type: 'INC_COUNTER'});
-store.dispatch({type: 'DEC_COUNTER'});
-store.dispatch({type: 'SUB_COUNTER', value: 5});
-store.dispatch({type: 'ADD_COUNTER', value: 10});
+store.dispatch({type: 'INCREMENT'});
+store.dispatch({type: 'DECREMENT'});
+store.dispatch({type: 'SUBSTRACT', value: 5});
+store.dispatch({type: 'ADD', value: 10});
 console.log(store.getState());
