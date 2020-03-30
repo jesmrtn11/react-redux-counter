@@ -7,17 +7,31 @@ const initialState = {
 
 // Reducer
 const rootReducer = (state = initialState, action) => {
-    if (action.type === 'INC_COUNTER') {
-        return {
-            ...state,
-            counter: state.counter + 1
-        };
-    }
-    if (action.type === 'ADD_COUNTER') {
-        return {
-            ...state,
-            counter: state.counter + action.value
-        };
+    switch (action.type) {
+        case "INC_COUNTER": {
+            return {
+                ...state,
+                counter: state.counter + 1
+            }
+        }
+        case "DEC_COUNTER": {
+            return {
+                ...state,
+                counter: state.counter - 1
+            }
+        }
+        case "ADD_COUNTER": {
+            return {
+                ...state,
+                counter: state.counter + action.value
+            }
+        }
+        case "SUB_COUNTER": {
+            return {
+                ...state,
+                counter: state.counter - action.value
+            }
+        }
     }
     return state;
 };
@@ -33,5 +47,7 @@ store.subscribe(() => {
 
 // Dispatching Action
 store.dispatch({type: 'INC_COUNTER'});
+store.dispatch({type: 'DEC_COUNTER'});
+store.dispatch({type: 'SUB_COUNTER', value: 5});
 store.dispatch({type: 'ADD_COUNTER', value: 10});
 console.log(store.getState());
